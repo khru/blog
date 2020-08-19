@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-markdown-blog-starter",
+  "name": "blog",
   "version": "1.0.0",
-  "author": "marinaaisa <marina@marinaaisa.com>",
+  "author": "Emmanuel Valverde Ramos",
   "private": true,
   "engines": {
     "node": ">=8.0.0",
@@ -12,7 +12,7 @@
     "markdown-it": "^10.0.0",
     "markdown-it-prism": "^2.0.3",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.11.0",
+    "nuxt": "^2.14.3",
     "nuxt-i18n": "^6.4.1",
     "nuxt-webfontloader": "^1.1.0",
     "vue-lazyload": "^1.3.3"
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "frontmatter-markdown-loader": "^3.1.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "responsive-loader": "^1.2.0",
     "sass-loader": "^8.0.0",
     "sharp": "^0.23.4"

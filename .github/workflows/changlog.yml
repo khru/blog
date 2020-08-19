@@ -1,0 +1,14 @@
+on: push
+name: Execute test on push
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 🕎 Clone and checkout of the actual branch
+              uses: actions/checkout@v2
+            - name: "✏️ Generate changelog"
+              id: generate-changelog
+              uses: heinrichreimer/action-github-changelog-generator@v2.1
+              with:
+                author: "false"
+                compare-link: "false"
