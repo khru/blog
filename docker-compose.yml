@@ -11,4 +11,4 @@ services:
     ports:
       - ${NODE_PORT}:${NODE_PORT}
     restart: always
-    command: sh -c "npm install && npm audit fix --force && npm run dev"
+    command: sh -c "npm install && npm audit fix && npm run dev"

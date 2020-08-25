@@ -10,5 +10,5 @@ jobs:
               id: generate-changelog
               uses: heinrichreimer/action-github-changelog-generator@v2.1
               with:
-                token: ${{ secrets.CHANGELOG}}
+                token: ${{ secrets.GITHUB_TOKEN }}
                 author: "false"
