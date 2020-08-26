@@ -1,5 +1,5 @@
 {
-  "name": "blog",
+  "name": "devpath",
   "version": "1.0.0",
   "author": "Emmanuel Valverde Ramos",
   "private": true,
@@ -22,7 +22,31 @@
   "scripts": {
     "dev": "nuxt",
     "generate": "nuxt generate",
-    "analyze": "nuxt build --analyze"
+    "analyze": "nuxt build --analyze",
+    "dev-ts": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "fix-permissions": "chmod +x -R ./scripts",
+    "todo": "./scripts/todo.sh",
+    "todo:file": "./scripts/todo.sh > todo.md",
+    "dc:dev": "docker-compose up",
+    "prettier:lint": "prettier -l \"./src/**/*.{js,jsx,css,json,scss,ts,css,sass,less}\"",
+    "format": "npm run prettier -- --write",
+    "lint": "./node_modules/.bin/eslint ./src; exit 0",
+    "lint:fix": "npm run lint --fix",
+    "validate": "npm run prettier -- && npm run lint:fix",
+    "prettier": "prettier --write src/**/*.{js,jsx,css,json,scss,ts,css,sass,less}",
+    "prettier:format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prettier:watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
+    "prettier:check": "prettier -l \"src/**/*.{js,jsx,css,json,scss,ts,css,sass,less}\"",
+    "lint-staged": "lint-staged",
+    "test": "./node_modules/.bin/jest  --verbose --coverage --updateSnapshot --notify",
+    "test:watch": "./node_modules/.bin/jest --watchAll --notify='true' --verbose --coverage --updateSnapshot",
+    "mkdir:contents": "mkdir -p ./contents",
+    "mkdir:blog": "mkdir -p ./pages/blog",
+    "mkdir:blog:es": "mkdir -p ./pages/blog/es",
+    "mkdir:blog:en": "mkdir -p ./pages/blog/en",
+    "content:create": "func() { touch ./content/articles/\"$1\"; }; func"
   },
   "devDependencies": {
     "frontmatter-markdown-loader": "^3.1.0",
@@ -30,5 +54,19 @@
     "responsive-loader": "^1.2.0",
     "sass-loader": "^8.0.0",
     "sharp": "^0.23.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{jsx,js,md,ts,css,sass,less,yml,yaml,scss,json,vue}": [
+      "npm run format",
+      "npm run lint:fix",
+      "npm run todo:file",
+      "./scripts/generate_env_example.sh",
+      "git add ."
+    ]
   }
 }

@@ -16,7 +16,7 @@
     async asyncData ({app}) {
 
       const blogs = app.i18n.locale === 'en' ? blogsEn : blogsEs
-      
+
       async function asyncImport (blogName) {
         const wholeMD = await import(`~/contents/${app.i18n.locale}/blog/${blogName}.md`)
         return wholeMD.attributes
@@ -29,7 +29,7 @@
         }
       })
     },
-    
+
     components: { BlogSection },
 
     transition: {
@@ -44,7 +44,7 @@
         },
         script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
         meta: [
-          { name: "author", content: "Marina Aisa" },
+          { name: "author", content: process.env.AUTHOR },
           { name: "description", property: "og:description", content: this.$t('indexPageHead.description'), hid: "description" },
           { property: "og:title", content: this.$t('indexPageHead.title') },
           { property: "og:image", content: this.ogImage },

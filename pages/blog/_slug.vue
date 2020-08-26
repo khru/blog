@@ -62,6 +62,10 @@
   export default {
 
     async asyncData ({params, app}) {
+      if (!params.slug) {
+        return app.context.redirect('/404');
+      }
+
       const fileContent = await import(`~/contents/${app.i18n.locale}/blog/${params.slug}.md`)
       const attr = fileContent.attributes
       return {
@@ -96,7 +100,7 @@
           lang: this.$i18n.locale,
         },
         meta: [
-          { name: "author", content: "Marina Aisa" },
+          { name: "author", content: process.env.AUTHOR },
           { name: "description", property: "og:description", content: this.description, hid: "description" },
           { property: "og:title", content: this.pageTitle },
           { property: "og:image", content: this.ogImage },
@@ -118,7 +122,7 @@
         return `${process.env.baseUrl}/images/blog/${this.id}/_thumbnail.jpg`;
       },
       pageTitle () {
-        return this.title + ' – Marina Aisa';
+        return this.title + ' – Emmanuel Valverde Ramos';
       },
       showLocales () {
         return this.$i18n.locales.filter(locale => locale.code !== this.$i18n.locale)

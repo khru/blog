@@ -1,3 +1,4 @@
+require('dotenv').config()
 const builtAt = new Date().toISOString()
 const path = require('path')
 const { I18N } = require('./locales/i18n-nuxt-config')
@@ -24,7 +25,7 @@ const productionUrl = {
   en: "/en",
   es: "/es"
 };
-const baseUrl = 'https://marinaaisa.com';
+const baseUrl = process.env.BASE_URL;
 
 module.exports = {
   env: {
@@ -32,7 +33,7 @@ module.exports = {
     productionUrl
   },
   head: {
-    title: 'Marina Aisa | Product Designer & Front-end Developer',
+    title: 'Emmanuel Valverde Ramos | Full stack',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' },
@@ -41,7 +42,7 @@ module.exports = {
       { name: 'theme-color', content: '#c1c1c1' },
       { name: 'robots', content: 'index, follow' },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:site', content: '@marinaaisa' },
+      { name: 'twitter:site', content: process.env.TWITTER_USER },
       { property: 'og:type', content: 'profile' },
       { property: 'og:updated_time', content: builtAt }
     ],
@@ -66,7 +67,7 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: {
-    color: '#5a46ff',
+    color: '#a346ff',
     height: '3px'
   },
   /*
@@ -116,7 +117,7 @@ module.exports = {
     }
   },
   plugins: ['~/plugins/lazyload', '~/plugins/globalComponents', { src: '~plugins/ga.js', ssr: false }],
-  modules: [  
+  modules: [
     '@nuxtjs/style-resources',
     ['nuxt-i18n', I18N],
     'nuxt-webfontloader'

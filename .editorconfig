@@ -8,7 +8,7 @@ trim_trailing_whitespace = false
 insert_final_newline = false
 
 
-[*.js]
+[{*.js, *.vue, *.ts}]
 indent_style = space
 indent_size = 2
 charset = utf-8
